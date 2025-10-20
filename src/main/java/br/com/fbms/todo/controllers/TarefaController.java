@@ -30,5 +30,10 @@ public class TarefaController {
         return service.salvar(tarefaNova);
     }
 
+    @GetMapping("/{id}")
+    public ResponseTarefaDTO buscarPorId(@PathVariable(name = "id") Long idTarefa) {
+        return service.obterTarefaPorId(idTarefa);
+    }
+
 
 }

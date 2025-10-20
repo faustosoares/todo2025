@@ -2,6 +2,7 @@ package br.com.fbms.todo.services;
 
 import br.com.fbms.todo.dto.RequestTarefaDTO;
 import br.com.fbms.todo.dto.ResponseTarefaDTO;
+import br.com.fbms.todo.exceptions.BadRequest;
 import br.com.fbms.todo.models.EntTarefa;
 import br.com.fbms.todo.repository.TarefaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,4 +28,13 @@ public class TarefaService {
 
         return new ResponseTarefaDTO(tarefaSalva.getId(), tarefaSalva.getTitulo());
     }
+
+    public ResponseTarefaDTO obterTarefaPorId(Long id) {
+        var tarefaEncontrada = repository.findById(id)
+                .orElseThrow(() -> new BadRequest("Tarefa não encontrada"));
+
+        return ResponseTarefaDTO.convert(tarefaEncontrada);
+    }
+
+
 }
