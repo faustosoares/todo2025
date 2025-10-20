@@ -6,8 +6,8 @@ public record RequestTarefaDTO(
         String titulo
 ) {
 
-    public EntTarefa map(Long id) {
-        return new EntTarefa(id, this.titulo);
+    public EntTarefa map() {
+        return new EntTarefa(this.titulo);
     }
 
 }

@@ -3,6 +3,8 @@ package br.com.fbms.todo.services;
 import br.com.fbms.todo.dto.RequestTarefaDTO;
 import br.com.fbms.todo.dto.ResponseTarefaDTO;
 import br.com.fbms.todo.models.EntTarefa;
+import br.com.fbms.todo.repository.TarefaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,18 +13,17 @@ import java.util.List;
 @Service
 public class TarefaService {
 
-    List<EntTarefa> tarefasBD = new ArrayList<>();
-    Long contador = 1L;
+    @Autowired
+    private TarefaRepository repository;
 
     public List<EntTarefa> obterTarefas() {
-        return tarefasBD;
+        return repository.findAll();
     }
 
     public ResponseTarefaDTO salvar(RequestTarefaDTO nova) {
+        EntTarefa tarefa = nova.map();
+        var tarefaSalva = repository.save(tarefa);
 
-        EntTarefa tarefa = nova.map(contador++);
-        tarefasBD.add(tarefa);
-
-        return new ResponseTarefaDTO(tarefa.getId(), tarefa.getTitulo());
+        return new ResponseTarefaDTO(tarefaSalva.getId(), tarefaSalva.getTitulo());
     }
 }
