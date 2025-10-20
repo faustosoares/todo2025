@@ -36,5 +36,12 @@ public class TarefaService {
         return ResponseTarefaDTO.convert(tarefaEncontrada);
     }
 
+    public void remover(Long id) {
+        var tarefa = repository.findById(id)
+                .orElseThrow(() -> new BadRequest("Tarefa não encontrado"));
+
+        repository.delete(tarefa);
+    }
+
 
 }
