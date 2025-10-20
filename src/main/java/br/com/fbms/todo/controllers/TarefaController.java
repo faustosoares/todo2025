@@ -1,5 +1,7 @@
 package br.com.fbms.todo.controllers;
 
+import br.com.fbms.todo.dto.RequestTarefaDTO;
+import br.com.fbms.todo.dto.ResponseTarefaDTO;
 import br.com.fbms.todo.models.EntTarefa;
 import br.com.fbms.todo.services.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class TarefaController {
     }
 
     @PostMapping
-    public EntTarefa gravar(@RequestBody EntTarefa tarefaNova) {
+    public ResponseTarefaDTO gravar(@RequestBody RequestTarefaDTO tarefaNova) {
         return service.salvar(tarefaNova);
     }
 
