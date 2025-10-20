@@ -3,9 +3,7 @@ package br.com.fbms.todo.controllers;
 import br.com.fbms.todo.models.EntTarefa;
 import br.com.fbms.todo.services.TarefaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +22,11 @@ public class TarefaController {
     @GetMapping
     public List<EntTarefa> listar() {
         return service.obterTarefas();
+    }
+
+    @PostMapping
+    public EntTarefa gravar(@RequestBody EntTarefa tarefaNova) {
+        return service.salvar(tarefaNova);
     }
 
 
