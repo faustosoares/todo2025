@@ -6,8 +6,4 @@ public record ResponseTarefaDTO(
         Long id,
         String titulo
 ) {
-
-    public static ResponseTarefaDTO convert(EntTarefa tarefa) {
-        return new ResponseTarefaDTO(tarefa.getId(), tarefa.getTitulo());
-    }
 }
