@@ -2,7 +2,7 @@ spring:
   application:
     name: Todo 2025
   datasource:
-    url: jdbc:h2:mem:traveldb;MODE=MySQL
+    url: jdbc:h2:mem:tododb;MODE=MySQL
     driverClassName: org.h2.Driver
     username: sa
     password:

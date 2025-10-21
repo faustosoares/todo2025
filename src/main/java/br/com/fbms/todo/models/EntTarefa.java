@@ -1,6 +1,11 @@
 package br.com.fbms.todo.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 @Entity
 @Table(name = "TB_TAREFA")
@@ -20,22 +25,6 @@ public class EntTarefa {
     }
 
     public EntTarefa(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 }
